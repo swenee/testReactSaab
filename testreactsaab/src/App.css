@@ -3,11 +3,14 @@
 }
 
 .Title{
-
+  background-color: red;
 }
 
 .content{
 
+  min-width: 100px;
+  min-height: 100px;
+  background-color: blue;
 }
 
 .App-header {
