@@ -1,4 +1,5 @@
 import React from 'react'
+import './Droppable.css';
 
 const Droppable = () => {
   const dragOver = (element) => {
@@ -15,9 +16,27 @@ const Droppable = () => {
 
   const drop = (element) => {
       element.preventDefault();
-      const files = element.dataTransfer.files;
+      let files = element.dataTransfer.files;
+      if(files != 0){
+        files = immageFilter(files);
+
+
+      }
       console.log(files);
   }
+
+  const immageFilter = (files) => {
+  const immageTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+
+  //TODO workes with one file. expand with a for files.length
+  if(immageTypes.indexOf(files[0].type) === -1){
+    return [];
+  }
+
+    return files;
+  }
+
+
 
   return (
     <div className="wrapper">
@@ -27,11 +46,11 @@ const Droppable = () => {
       onDragLeave={dragLeave}
       onDrop={drop}
       >
-
-
         Drop Here :)
       </div>
+
     </div>
+
   )
 }
 
